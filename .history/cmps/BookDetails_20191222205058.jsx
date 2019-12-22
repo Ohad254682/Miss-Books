@@ -67,7 +67,7 @@ export default class BookDetails extends React.Component {
                 <li key="10" className={this.state.isCheap}>Price : {this.props.book.listPrice.amount}{this.props.currency} </li>
                 <li key="11">{this.state.howLong}</li>
                 <li key="12">{this.state.howOld}</li>
-                {this.props.book.listPrice.isOnSale ? <li key="13" className="on-sale">On Sale</li> : <li key="13"></li>}
+                {this.props.book.listPrice.isOnSale ? <li key="13" className="on-sale">On Sale</li> : <li></li>}
             </ul>
             <button onClick={this.props.returnToMenu}>Go Back</button>
         </div>

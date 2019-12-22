@@ -1,14 +1,12 @@
 import { getBooks } from '../services/MissBooksService.jsx';
 import { BooksList } from '../cmps/BooksList.jsx';
 import BookDetails from '../cmps/BookDetails.jsx';
-import BookFilter from '../cmps/FilterBy.jsx'
 class App extends React.Component {
 
     state = {
         booksToShow: [],
         selectedBook: null,
-        currency: null,
-        filterBy: null
+        currency: null
     }
 
     componentDidMount() {
@@ -16,7 +14,7 @@ class App extends React.Component {
     }
 
     loadBooks = () => {
-        this.setState({ booksToShow: getBooks(this.state.filterBy) });
+        this.setState({ booksToShow: getBooks() });
     }
 
     onSelectBook = (book) => {
@@ -34,18 +32,13 @@ class App extends React.Component {
         })
     }
 
-    onSetFilter = (filterBy) => {
-        this.setState({ filterBy: filterBy }, this.loadBooks);
-    }
-
     render() {
         return (
             <main>
-                {this.state.selectedBook ?
-                    <BookDetails book={this.state.selectedBook} currency={this.state.currency} returnToMenu={this.returnToMenu} ></BookDetails >
+                {this.state.selectedBook ? [<BookFilter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter} />,
+                <BookDetails book={this.state.selectedBook} currency={this.state.currency} returnToMenu={this.returnToMenu} ></BookDetails >]
                     :
-                    [<BookFilter onSetFilter={this.onSetFilter}></BookFilter>,
-                    <BooksList books={this.state.booksToShow} onSelectBook={this.onSelectBook} onSetCurrency={this.onSetCurrency}></BooksList>]
+                    <BooksList books={this.state.booksToShow} onSelectBook={this.onSelectBook} onSetCurrency={this.onSetCurrency}></BooksList>
                 }
             </main>
         )

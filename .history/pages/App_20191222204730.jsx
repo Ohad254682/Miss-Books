@@ -44,7 +44,7 @@ class App extends React.Component {
                 {this.state.selectedBook ?
                     <BookDetails book={this.state.selectedBook} currency={this.state.currency} returnToMenu={this.returnToMenu} ></BookDetails >
                     :
-                    [<BookFilter onSetFilter={this.onSetFilter}></BookFilter>,
+                    [<BookFilter onSetFilter={this.onSetFilter} />,
                     <BooksList books={this.state.booksToShow} onSelectBook={this.onSelectBook} onSetCurrency={this.onSetCurrency}></BooksList>]
                 }
             </main>

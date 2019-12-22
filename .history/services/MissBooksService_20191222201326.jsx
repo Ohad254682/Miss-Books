@@ -441,7 +441,7 @@ var gBooks = [
     }
 ]
 
-export function getBooks(filterBy) {
+export function getPets(filterBy) {
     if (!filterBy) return [...gBooks];
     return gBooks.filter(book => book.title.includes(filterBy.title))
 

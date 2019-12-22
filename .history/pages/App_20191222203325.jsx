@@ -8,7 +8,7 @@ class App extends React.Component {
         booksToShow: [],
         selectedBook: null,
         currency: null,
-        filterBy: null
+        filterBy:null
     }
 
     componentDidMount() {
@@ -34,18 +34,17 @@ class App extends React.Component {
         })
     }
 
-    onSetFilter = (filterBy) => {
-        this.setState({ filterBy: filterBy }, this.loadBooks);
+    onSetFilter = (filterBy) =>{
+        this.setState({filterBy:filterBy} , this.loadBooks);
     }
 
     render() {
         return (
             <main>
-                {this.state.selectedBook ?
-                    <BookDetails book={this.state.selectedBook} currency={this.state.currency} returnToMenu={this.returnToMenu} ></BookDetails >
+                {this.state.selectedBook ? [<BookFilter onSetFilter={this.onSetFilter} />,
+                <BookDetails book={this.state.selectedBook} currency={this.state.currency} returnToMenu={this.returnToMenu} ></BookDetails >]
                     :
-                    [<BookFilter onSetFilter={this.onSetFilter}></BookFilter>,
-                    <BooksList books={this.state.booksToShow} onSelectBook={this.onSelectBook} onSetCurrency={this.onSetCurrency}></BooksList>]
+                    <BooksList books={this.state.booksToShow} onSelectBook={this.onSelectBook} onSetCurrency={this.onSetCurrency}></BooksList>
                 }
             </main>
         )
