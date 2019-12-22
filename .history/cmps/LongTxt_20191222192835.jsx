@@ -30,7 +30,7 @@ export default class LongTxt extends React.Component {
 
 
     render() {
-        return <li>description : {this.props.isLongTxtShown ? <div>{this.state.descContent} < button onClick={this.onExpandChange}>{this.state.expanderText}</button></div>
+        return <li>description : {this.props.isLongTxtShown ? <div>{this.descContent} < button onClick={this.onExpandChange}>{this.state.expanderText}</button></div>
             : this.props.text
         }</li>
     }

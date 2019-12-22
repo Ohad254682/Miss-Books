@@ -7,7 +7,10 @@ export default class LongTxt extends React.Component {
     }
 
     componentDidMount() {
-        this.changeExpanderText();
+        this.setHowLong();
+        this.setHowOld();
+        this.setIsCheap();
+        this.isLongTxtShown();
     }
 
 
@@ -19,19 +22,14 @@ export default class LongTxt extends React.Component {
         if (!this.state.isExpanded)
             this.setState({
                 expanderText: 'Show More',
-                descContent: this.props.text.slice(0, 100)
             });
         else
-            this.setState({
-                expanderText: 'Show Less',
-                descContent: this.props.text.slice(0, this.props.text.length)
-            });
+            this.setState({ expanderText: 'Show Less' });
     }
 
 
     render() {
-        return <li>description : {this.props.isLongTxtShown ? <div>{this.state.descContent} < button onClick={this.onExpandChange}>{this.state.expanderText}</button></div>
-            : this.props.text
-        }</li>
+        return <li>description : {this.props.isLongTxtShown ? <button onClick={this.onExpandChange}>{this.state.expanderText}</button>
+            : this.props.text}</li>
     }
 }
