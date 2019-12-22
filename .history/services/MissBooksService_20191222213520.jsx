@@ -442,7 +442,7 @@ var gBooks = [
 ]
 
 export function getBooks(filterBy) {
-    if (!filterBy) return [...gBooks];
+    if (!filterBy.title && filterBy.price === 0) return [...gBooks];
     return gBooks.filter(book => book.title.includes(filterBy.title) && book.listPrice.amount >= filterBy.price)
 
 }
