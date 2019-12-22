@@ -7,6 +7,7 @@ class App extends React.Component {
     state = {
         booksToShow: [],
         selectedBook: null,
+        currency: null,
         filterBy: null
     }
 

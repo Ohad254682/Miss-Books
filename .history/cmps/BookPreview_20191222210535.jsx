@@ -13,11 +13,15 @@ export default class BookPreview extends React.Component {
 
     setPriceCurrency = () => {
         switch (this.props.book.listPrice.currencyCode) {
-            case 'ILS': this.setState({ currency: '₪' }); break;
-            case 'USD': this.setState({ currency: '$' }); break;
-            case 'EUR': this.setState({ currency: '€' }); break;
+            case 'ILS': this.setState({ currency: '₪' }, this.onSetCurrency); break;
+            case 'USD': this.setState({ currency: '$' }, this.onSetCurrency); break;
+            case 'EUR': this.setState({ currency: '€' }, this.onSetCurrency); break;
         }
-    }   
+    }
+
+    onSetCurrency = () => {
+        this.props.onSetCurrency(this.state.currency);
+    }
 
     onSelectBook = () => {
         this.props.onSelectBook(this.props.book);

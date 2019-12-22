@@ -18,8 +18,7 @@ export default class BookFilter extends React.Component {
         return <div>
             <input type="text" placeholder="Title" value={this.state.filterBy.title}
                 onChange={this.changeInput} name="title"></input>
-            <input type="range" min="0" max="1000" value={this.state.filterBy.price}
-             onChange={this.changeInput} name="price"></input>
+            <input type="range" min="0" max="1000" value={this.state.filterBy.price}></input>
         </div>
     }
 }
