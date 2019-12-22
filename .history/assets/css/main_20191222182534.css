@@ -1,0 +1,35 @@
+.book-list{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    list-style: none;
+}
+
+.red{
+    color:red;
+}
+
+.green{
+    color:green;
+}
+
+.on-sale{
+    font-size:2rem;
+    border:dashed 2px gold;
+    display:inline;
+}
+
+.book-details{
+    column-count: 2;
+    font-size:1.2rem;
+    list-style: none;
+    display:flex;
+    justify-content: center;
+    align-items:flex-start;
+}
+
+.selected-book-page{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-direction:column;
+}
