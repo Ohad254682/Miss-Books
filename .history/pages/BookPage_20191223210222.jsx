@@ -40,10 +40,16 @@ export default class BookPage extends React.Component {
     }
 
 
+    onDelete = (pet) => {
+        petsService.deletePet(pet).then(() => {
+            this.props.history.push('/pets')
+        });
+    }
+
     render() {
         if (!this.state.book) return <div>Loading...</div>
         return <div>
-            <BookDetails book={this.state.book} goBack={this.goBack} onAddReview={this.onAddReview} onDeleteReview={this.onDeleteReview}></BookDetails>
+            <BookDetails book={this.state.book} goBack={this.goBack} onAddReview={this.onAddReview}></BookDetails>
         </div>
     }
 }

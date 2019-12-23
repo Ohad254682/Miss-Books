@@ -441,7 +441,7 @@ var gBooks = [
     }
 ]
 
-export default { getBooks, getBookById, addReview, deleteReview }
+export default { getBooks, getBookById, addReview }
 
 function getBooks(filterBy) {
     const books = (!filterBy) ? [...gBooks] :
@@ -460,24 +460,14 @@ function addReview(id, name, rate, date, comment) {
     let editBook = gBooks.find(book => book.id === id)
     editBook = { ...editBook };
     var newReview = { name: name, rate: rate, date: date, comment: comment };
-    if (!editBook.reviews) editBook.reviews = [];
-    editBook.reviews = [...editBook.reviews, newReview]
+    editBook.reviews = [...editBook.reviews, newReview];
+
     gBooks = gBooks.map(book => editBook.id === book.id ? editBook : book);
 
 
     return Promise.resolve(editBook)
 }
 
-function deleteReview(bookId, reviewName) {
-    gBooks.map(book => {
-        book.id !== bookId ? book :
-            {
-                ...book, reviews: book.reviews.filter((currReview) => {
-                    return currReview.name !== reviewName
-                })
-            }
-    })
-}
 
 
 

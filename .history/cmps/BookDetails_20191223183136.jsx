@@ -1,14 +1,18 @@
 import LongTxt from 'LongTxt.jsx'
-import Reviews from 'Reviews.jsx'
-
 
 export default class BookDetails extends React.Component {
 
     state = {
+        howLong: null,
+        howOld: null,
+        isCheap: null,
         isLongTxtShown: null
     }
 
     componentDidMount() {
+        this.setHowLong();
+        this.setHowOld();
+        this.setIsCheap();
         this.isLongTxtShown()
     }
 
@@ -21,12 +25,12 @@ export default class BookDetails extends React.Component {
 
     setHowLong = () => {
         if (this.props.book.pageCount > 500)
-            return 'Long reading';
+            this.setState({ howLong: 'Long reading' });
         else
             if (this.props.book.pageCount > 200)
-                return 'Decent Reading';
+                this.setState({ howLong: 'Decent Reading' });
         if (this.props.book.pageCount < 100)
-            return 'Light Reading';
+            this.setState({ howLong: 'Light Reading' });
     }
 
     setHowOld = () => {
@@ -40,15 +44,15 @@ export default class BookDetails extends React.Component {
 
     setIsCheap = () => {
         if (this.props.book.listPrice.amount > 150)
-            return 'red';
+            this.setState({ isCheap: 'red' });
         else if (this.props.book.listPrice.amount < 20)
-            return 'green';
+            this.setState({ isCheap: 'green' });
 
     }
 
 
     render() {
-        return <div className="selected-book-page">
+        return <div>{this.props.book && <div className="selected-book-page">
             <img src={this.props.book.thumbnail}></img>
             <ul className="book-details">
                 <li key="1">Id : {this.props.book.id}</li>
@@ -60,13 +64,13 @@ export default class BookDetails extends React.Component {
                 <li key="7">pageCount : {this.props.book.pageCount}</li>
                 <li key="8">categories :{this.props.book.categories.map((category) => <li>{category}</li>)}</li>
                 <li key="9">language : {this.props.book.language}</li>
-                <li key="10" className={this.setIsCheap()}>Price : {this.props.book.listPrice.amount}{this.props.currency} </li>
-                <li key="11">{this.setHowLong()}</li>
-                <li key="12">{this.setHowOld()}</li>
+                <li key="10" className={this.state.isCheap}>Price : {this.props.book.listPrice.amount}{this.props.currency} </li>
+                <li key="11">{this.state.howLong}</li>
+                <li key="12">{this.state.howOld}</li>
                 {this.props.book.listPrice.isOnSale ? <li key="13" className="on-sale">On Sale</li> : <li key="14"></li>}
             </ul>
-            <Reviews book={this.props.book} onAddReview={this.props.onAddReview} onDeleteReview={this.props.onDeleteReview}></Reviews>
-            <button onClick={this.props.goBack}>Go Back</button>
+            <button onClick={this.props.returnToMenu}>Go Back</button>
+        </div>}
         </div>
     }
 }

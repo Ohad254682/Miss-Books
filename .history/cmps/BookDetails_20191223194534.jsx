@@ -65,7 +65,7 @@ export default class BookDetails extends React.Component {
                 <li key="12">{this.setHowOld()}</li>
                 {this.props.book.listPrice.isOnSale ? <li key="13" className="on-sale">On Sale</li> : <li key="14"></li>}
             </ul>
-            <Reviews book={this.props.book} onAddReview={this.props.onAddReview} onDeleteReview={this.props.onDeleteReview}></Reviews>
+            <Reviews book={book} onAddReview={this.props.onAddReview}></Reviews>
             <button onClick={this.props.goBack}>Go Back</button>
         </div>
     }

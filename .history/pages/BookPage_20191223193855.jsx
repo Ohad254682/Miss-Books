@@ -35,15 +35,10 @@ export default class BookPage extends React.Component {
         })
     }
 
-    onDeleteReview = (reviewName) => {
-        BookService.deleteReview(reviewName);
-    }
-
-
     render() {
         if (!this.state.book) return <div>Loading...</div>
         return <div>
-            <BookDetails book={this.state.book} goBack={this.goBack} onAddReview={this.onAddReview} onDeleteReview={this.onDeleteReview}></BookDetails>
+            <BookDetails book={this.state.book} goBack={this.goBack} onAddReview={this.onAddReview}></BookDetails>
         </div>
     }
 }

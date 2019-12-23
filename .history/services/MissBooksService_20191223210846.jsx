@@ -468,17 +468,9 @@ function addReview(id, name, rate, date, comment) {
     return Promise.resolve(editBook)
 }
 
-function deleteReview(bookId, reviewName) {
-    gBooks.map(book => {
-        book.id !== bookId ? book :
-            {
-                ...book, reviews: book.reviews.filter((currReview) => {
-                    return currReview.name !== reviewName
-                })
-            }
-    })
+function deleteReview(review) {
+    return gBooks.reviews.filter((currPet) => currPet.id !== pet.id)
+
 }
-
-
 
 

@@ -1,14 +1,17 @@
 import LongTxt from 'LongTxt.jsx'
-import Reviews from 'Reviews.jsx'
-
 
 export default class BookDetails extends React.Component {
 
     state = {
+        howLong: null,
+        howOld: null,
+        isCheap: null,
         isLongTxtShown: null
     }
 
     componentDidMount() {
+        this.setHowLong();
+        this.setHowOld();
         this.isLongTxtShown()
     }
 
@@ -48,7 +51,7 @@ export default class BookDetails extends React.Component {
 
 
     render() {
-        return <div className="selected-book-page">
+        return <div>{this.props.book && <div className="selected-book-page">
             <img src={this.props.book.thumbnail}></img>
             <ul className="book-details">
                 <li key="1">Id : {this.props.book.id}</li>
@@ -65,8 +68,8 @@ export default class BookDetails extends React.Component {
                 <li key="12">{this.setHowOld()}</li>
                 {this.props.book.listPrice.isOnSale ? <li key="13" className="on-sale">On Sale</li> : <li key="14"></li>}
             </ul>
-            <Reviews book={this.props.book} onAddReview={this.props.onAddReview} onDeleteReview={this.props.onDeleteReview}></Reviews>
-            <button onClick={this.props.goBack}>Go Back</button>
+            <button onClick={this.props.returnToMenu}>Go Back</button>
+        </div>}
         </div>
     }
 }

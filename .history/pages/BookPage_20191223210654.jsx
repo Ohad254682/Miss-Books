@@ -36,7 +36,8 @@ export default class BookPage extends React.Component {
     }
 
     onDeleteReview = (reviewName) => {
-        BookService.deleteReview(reviewName);
+        console.log(reviewName)
+        // BookService.deleteReview(reviewName);
     }
 
 

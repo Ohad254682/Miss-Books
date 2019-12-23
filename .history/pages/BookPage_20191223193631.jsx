@@ -29,21 +29,16 @@ export default class BookPage extends React.Component {
         this.props.history.push('/books')
     }
 
-    onAddReview = (name, rate, date, comment) => {
-        BookService.addReview(this.state.book.id, name, rate, date, comment).then(book => {
-            this.setState({ book })
+    onAddReview =(name)=>{
+        petsService.addNickname(this.state.pet.id , name).then(pet=>{
+            this.setState({ pet })
         })
     }
-
-    onDeleteReview = (reviewName) => {
-        BookService.deleteReview(reviewName);
-    }
-
 
     render() {
         if (!this.state.book) return <div>Loading...</div>
         return <div>
-            <BookDetails book={this.state.book} goBack={this.goBack} onAddReview={this.onAddReview} onDeleteReview={this.onDeleteReview}></BookDetails>
+            <BookDetails book={this.state.book} goBack={this.goBack}></BookDetails>
         </div>
     }
 }

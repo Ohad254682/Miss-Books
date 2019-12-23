@@ -471,11 +471,9 @@ function addReview(id, name, rate, date, comment) {
 function deleteReview(bookId, reviewName) {
     gBooks.map(book => {
         book.id !== bookId ? book :
-            {
-                ...book, reviews: book.reviews.filter((currReview) => {
-                    return currReview.name !== reviewName
-                })
-            }
+            [...book, book.reviews.filter((currReview) => {
+                currReview.name !== reviewName
+            })]
     })
 }
 
