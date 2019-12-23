@@ -1,6 +1,6 @@
 
 
-const { Link } = ReactRouterDOM;
+
 export default class BookPreview extends React.Component {
 
     state = {
@@ -19,6 +19,9 @@ export default class BookPreview extends React.Component {
         }
     }
 
+    onSelectBook = () => {
+        this.props.onSelectBook(this.props.book);
+    }
     render() {
         return <Link to={`/books/${this.props.book.id}`}>
             <img src={this.props.book.thumbnail}></img>

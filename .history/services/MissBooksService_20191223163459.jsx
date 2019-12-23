@@ -441,19 +441,12 @@ var gBooks = [
     }
 ]
 
-export default { getBooks, getBookById }
+export default {getBooks}
 
 function getBooks(filterBy) {
-    const books = (!filterBy) ? [...gBooks] :
-        gBooks.filter(book => book.title.includes(filterBy.title) && book.listPrice.amount >= filterBy.price)
-    return Promise.resolve(books);
+    if (!filterBy) return [...gBooks];
+    return gBooks.filter(book => book.title.includes(filterBy.title) && book.listPrice.amount >= filterBy.price)
 
-}
-
-
-function getBookById(bookId) {
-    const book = gBooks.find(book => book.id === bookId);
-    return Promise.resolve(book);
 }
 
 

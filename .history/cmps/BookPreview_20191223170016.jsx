@@ -1,6 +1,6 @@
 
 
-const { Link } = ReactRouterDOM;
+const { Link } = ReactRouterDOM
 export default class BookPreview extends React.Component {
 
     state = {
@@ -26,4 +26,17 @@ export default class BookPreview extends React.Component {
             <li key="b">Price : {this.props.book.listPrice.amount}{this.state.currency} </li>
         </Link>
     }
+
+
+    render() {
+        // const props = this.props;
+        const { props } = this;
+        return <Link to={`/pets/${props.pet.id}`}>
+            <li onClick={this.onSelectPet}>
+                <h2>{props.pet.name}</h2>
+                <img src={props.pet.imgUrl} height="300" />
+            </li>
+        </Link>
+    }
+}
 }
